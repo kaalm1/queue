@@ -2,12 +2,15 @@ class QueueStack
   attr_accessor :s1, :s2
 
   def initialize
-    @s1, @s2, @max, @max2 = [], [], [], []
+    @s1, @s2, @max = [], [], []
+    @max2 = nil
   end
 
   def push(val)
     @s1 << val
-    @max2 << val if @max2.empty? || val >= @max2.last
+    if !@max2 || val >= @max2
+      @max2 = val
+    end
   end
 
   def peek
@@ -17,7 +20,9 @@ class QueueStack
         @s2 << val
         @max << val if @max.empty? || val >= @max.last
       end
-      @max2 = []
+      if @s1.empty?
+        @max2 = nil
+      end
     end
     @s2.last
   end
@@ -31,7 +36,7 @@ class QueueStack
 
   def max
     peek
-    !@max2.empty? && @max2.last > @max.last ? @max2.last : @max.last
+    !!@max2 && @max2 > @max.last ? @max2 : @max.last
   end
 
   def empty
