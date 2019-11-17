@@ -37,26 +37,30 @@ class QueueStack
   def empty
     @s1.empty? && @s2.empty?
   end
+
+  def list
+    @s2.reverse + @s1
+  end
 end
 
 # Tests
 
-queue = QueueStack.new
-queue.push(35)
-queue.push(20)
-queue.push(10)
-queue.push(10)
-queue.push(20)
-queue.push(15)
-puts queue.peek
-puts queue.max
-queue.pop
-puts queue.peek
-queue.pop
-puts queue.max
-queue.push(40)
-puts queue.max
-queue.pop
-queue.pop
-queue.pop
-puts queue.max
+# queue = QueueStack.new
+# queue.push(35)
+# queue.push(20)
+# queue.push(10)
+# queue.push(10)
+# queue.push(20)
+# queue.push(15)
+# puts queue.peek
+# puts queue.max
+# queue.pop
+# puts queue.peek
+# queue.pop
+# puts queue.max
+# queue.push(40)
+# puts queue.max
+# queue.pop
+# queue.pop
+# queue.pop
+# puts queue.max
